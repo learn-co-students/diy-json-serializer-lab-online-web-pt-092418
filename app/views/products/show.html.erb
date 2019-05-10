@@ -5,6 +5,13 @@
   <div class="productDescription">
     <%= @product.description %>
   </div>
+  <div class="productPrice">
+    <%= @product.price %>
+  </div>
+  <div class="productInventory">
+    <%= @product.inventory %>
+  </div>
+
 <a href="#" class="js-next" data-id="<%= @product.id %>">Next Product</a>
 
 <script type="text/javascript">
@@ -15,7 +22,10 @@
       let nextId = parseInt($(".js-next").attr("date-id")) + 1;
       $.getJSON("/product" + nextId + "/data", function(data) {
         $(".productName").text(data["name"]);
+        $(".productPrice").text(data["price"]);
+        $(".productInventory").text(data["inventory"]);
         $(".productDescription").text(data["description"]);
+
         $(".js-next").attr("data-id", data["id"])
       });
     });
