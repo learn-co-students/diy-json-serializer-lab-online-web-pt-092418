@@ -20,7 +20,7 @@
     $(".js-next").on("click", function(e) {
       e.preventDefault()
       let nextId = parseInt($(".js-next").attr("date-id")) + 1;
-      $.getJSON("/product" + nextId + "/data", function(data) {
+      $.getJSON("/products" + nextId + "/data", function(data) {
         $(".productName").text(data["name"]);
         $(".productPrice").text(data["price"]);
         $(".productInventory").text(data["inventory"]);
