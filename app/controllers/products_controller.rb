@@ -15,10 +15,13 @@ class ProductsController < ApplicationController
 
   def data
     product = Product.find(params[:id])
+    # binding.pry
+
     render json: ProductSerializer.serialize(product)
   end
 
   def show
+     # binding.pry
     @product = Product.find(params[:id])
   end
 
