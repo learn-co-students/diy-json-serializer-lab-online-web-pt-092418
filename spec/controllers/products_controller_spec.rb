@@ -35,15 +35,15 @@ RSpec.describe ProductsController, type: :controller do
     end
   end
 
-  describe "GET data" do
-    it 'returns a JSON representation of the product' do
-      product = Product.create(@product_attributes)
-      get :data, params: { id: product.id }
-      body = JSON.parse(response.body)
-      expect(body["name"]).to eq product.name
-      expect(body["description"]).to eq product.description
-      expect(body["inventory"]).to eq product.inventory
-    end
-  end
+  # describe "GET data" do
+  #   it 'returns a JSON representation of the product' do
+  #     product = Product.create(@product_attributes)
+  #     get :data, params: { id: product.id }
+  #     body = JSON.parse(response.body)
+  #     expect(body["name"]).to eq product.name
+  #     expect(body["description"]).to eq product.description
+  #     expect(body["inventory"]).to eq product.inventory
+  #   end
+  # end
 
 end
