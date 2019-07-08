@@ -1,0 +1,39 @@
+<h1 class="productName"><%= @product.name %></h1>
+<a href="#" class="js-next" data-id=<%=@product.id%>>Next Product</a>
+<h2 class="productPrice"><%= @product.price %></h2><br>
+<p class="productDescription"><%= @product.description %></p><br>
+<p class="productInventory"><%= @product.inventory %></p>
+
+
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        $(".js-next").on("click", function(e) {
+            e.preventDefault();
+            var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+            $.getJSON("/products/" + nextId + "/data", function(data) {
+                debugger;
+                $(".productName").text(data["name"]);
+                $(".productDescription").text(data["description"]);
+                $(".productInventory").text(data["inventory"]);
+                $(".productPrice").text(data["price"]);
+                // re-set the id to current on the link
+                $(".js-next").attr("data-id", data["id"]);
+            });
+        });
+    });
+</script>
+
+<!--<script type="text/javascript" charset="utf-8">-->
+<!--    $(function () {-->
+<!--        $(".js-next").on("click", function(e) {-->
+<!--            e.preventDefault();-->
+<!--            var nextId = parseInt($(".js-next").attr("data-id")) + 1;-->
+<!--            $.getJSON("/posts/" + nextId + "/post_data", function(data) {-->
+<!--                $(".postTitle").text(data["title"]);-->
+<!--                $(".postBody").text(data["description"]);-->
+<!--                // re-set the id to current on the link-->
+<!--                $(".js-next").attr("data-id", data["id"]);-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
